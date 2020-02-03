@@ -1,0 +1,7 @@
+{
+  "posts": [
+    { "id": 1, "title": "React is amazing!", "author": "Yovany Luis" },
+    { "id": 2, "title": "Redux for begginers", "author": "Dan Abramov" },
+    { "id": 3, "title": "Redux Saga for advanced", "author": "Jose Lopez" }
+  ]
+}

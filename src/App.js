@@ -1,23 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import useRequest from './Hooks/useRequest';
+
+const Posts = ({ post }) => <li><strong>{post.title}</strong> - <i>{post.author}</i></li>
+const PostList = ({ posts }) => <ul>{posts.map(post => <Posts post={post} />)}</ul>
 
 function App() {
+  const { data, loading, error } = useRequest({ endpoint: 'posts' });
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {loading && <p>Loading...</p>}
+        {!loading && error && <p>Error loading Posts: {error}</p>}
+        {!loading && data && <PostList posts={data} />}
       </header>
     </div>
   );
